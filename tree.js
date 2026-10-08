@@ -44,17 +44,13 @@ export class Tree {
       else if (currentNode.data > value) {
         if (currentNode.left === null) {
           currentNode.left = node;
-        } else {
-          currentNode = currentNode.left;
           return;
-        }
+        } else currentNode = currentNode.left;
       } else {
         if (currentNode.right === null) {
           currentNode.right = node;
-        } else {
-          currentNode = currentNode.right;
           return;
-        }
+        } else currentNode = currentNode.right;
       }
     }
   }
