@@ -3,5 +3,7 @@ export class Tree {
   constructor(someArray) {
     this.root = this.buildTree(someArray);
   }
-  buildTree(array) {}
+  buildTree(array) {
+    array.sort((a, b) => a - b);
+  }
 }
