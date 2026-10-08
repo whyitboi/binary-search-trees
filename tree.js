@@ -4,6 +4,7 @@ export class Tree {
     this.root = this.buildTree(someArray);
   }
   buildTree(array) {
+    if (array.length <= 0) return null;
     array.sort((a, b) => a - b);
     array = [...new Set(array)];
 
@@ -12,7 +13,9 @@ export class Tree {
     let rightArr = array.slice(mid + 1);
     let root = new Node(array[mid]);
 
-    root.left = this.buildTree(array);
-    root.right = this.buildTree(array);
+    root.left = this.buildTree(leftArr);
+    root.right = this.buildTree(rightArr);
+
+    return root;
   }
 }
