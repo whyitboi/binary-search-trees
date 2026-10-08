@@ -20,12 +20,17 @@ export class Tree {
     return root;
   }
   includes(value) {
-    if (value > this.root) {
-      this.includes(this.root.right);
-    } else if (value < this.root) {
-      this.includes(this.root.left);
-    } else if (value === this.root) {
-      return this.root.data;
+    let currentNode = this.root;
+    while (currentNode !== null) {
+      if (value > this.root.data) {
+        this.includes(this.root.right);
+        currentNode = currentNode.right;
+      } else if (value < this.root.data) {
+        this.includes(this.root.left);
+        currentNode = currentNode.left;
+      } else if (value === this.root.data) {
+        return this.root.data;
+      }
     }
   }
 }
