@@ -41,9 +41,8 @@ export class Tree {
 
     while (currentNode !== null) {
       if (currentNode.data === value) return currentNode.data;
-      else if (currentNode.data > value)
-        currentNode = this.insert(currentNode.left.data);
-      else currentNode = this.insert(currentNode.right.data);
+      else if (currentNode.data > value) currentNode = currentNode.left.data;
+      else currentNode = currentNode.right.data;
     }
   }
 }
