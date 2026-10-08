@@ -40,15 +40,21 @@ export class Tree {
     }
 
     while (currentNode !== null) {
-      if (currentNode.data === value) return currentNode.data;
+      if (currentNode.data === value) return;
       else if (currentNode.data > value) {
         if (currentNode.left === null) {
           currentNode.left = node;
-        } else currentNode = currentNode.left;
+        } else {
+          currentNode = currentNode.left;
+          return;
+        }
       } else {
         if (currentNode.right === null) {
           currentNode.right = node;
-        } else currentNode = currentNode.right;
+        } else {
+          currentNode = currentNode.right;
+          return;
+        }
       }
     }
   }
