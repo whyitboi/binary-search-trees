@@ -38,7 +38,6 @@ export class Tree {
       this.root = node;
       return;
     }
-
     while (currentNode !== null) {
       if (currentNode.data === value) return;
       else if (currentNode.data > value) {
@@ -50,6 +49,24 @@ export class Tree {
         if (currentNode.right === null) {
           currentNode.right = node;
           return;
+        } else currentNode = currentNode.right;
+      }
+    }
+  }
+  deleteItem(value) {
+    let currentNode = this.root;
+
+    if (currentNode === null) return;
+    while (currentNode !== null) {
+      if (currentNode.data > value) {
+        if (currentNode.left.data === value) {
+          //delete here. But how do I do it and how do I know where to point
+          //the new node to the left or right?
+        } else currentNode = currentNode.left;
+      } else if (currentNode.data < value) {
+        if (currentNode.right.data === value) {
+          //delete here. But how do I do it and how do I know where to point
+          //the new node to the left or right?
         } else currentNode = currentNode.right;
       }
     }
