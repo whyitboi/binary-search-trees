@@ -22,15 +22,14 @@ export class Tree {
   includes(value) {
     let currentNode = this.root;
     while (currentNode !== null) {
-      if (value > this.root.data) {
-        this.includes(this.root.right);
+      if (value > currentNode.data) {
         currentNode = currentNode.right;
-      } else if (value < this.root.data) {
-        this.includes(this.root.left);
+      } else if (value < currentNode.data) {
         currentNode = currentNode.left;
-      } else if (value === this.root.data) {
-        return this.root.data;
+      } else if (value === currentNode.data) {
+        return true;
       }
     }
+    return false;
   }
 }
