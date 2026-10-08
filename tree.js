@@ -5,7 +5,7 @@ export class Tree {
   }
   buildTree(array) {
     if (array.length <= 0) return null;
-    //copy before sorting
+    //copy/deduplicate before sorting
     array = [...new Set(array)];
     array.sort((a, b) => a - b);
 
@@ -18,5 +18,14 @@ export class Tree {
     root.right = this.buildTree(rightArr);
 
     return root;
+  }
+  includes(value) {
+    if (value > this.root) {
+      this.includes(this.root.right);
+    } else if (value < this.root) {
+      this.includes(this.root.left);
+    } else if (value === this.root) {
+      return this.root.data;
+    }
   }
 }
