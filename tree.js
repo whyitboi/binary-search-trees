@@ -60,13 +60,25 @@ export class Tree {
     while (currentNode !== null) {
       if (currentNode.data > value) {
         if (currentNode.left.data === value) {
-          //delete here. But how do I do it and how do I know where to point
-          //the new node to the left or right?
+          const target = currentNode.left;
+          if (target.left !== null && target.right === null) {
+            //left child
+          } else if (target.left === null && target.right !== null) {
+            //right child
+          } else {
+            //2children
+          }
         } else currentNode = currentNode.left;
       } else if (currentNode.data < value) {
         if (currentNode.right.data === value) {
-          //delete here. But how do I do it and how do I know where to point
-          //the new node to the left or right?
+          const target = currentNode.right;
+          if (target.left !== null && target.right === null) {
+            //left child
+          } else if (target.left === null && target.right !== null) {
+            //right child
+          } else {
+            //2children
+          }
         } else currentNode = currentNode.right;
       }
     }
