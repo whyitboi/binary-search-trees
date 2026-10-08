@@ -5,8 +5,9 @@ export class Tree {
   }
   buildTree(array) {
     if (array.length <= 0) return null;
-    array.sort((a, b) => a - b);
+    //copy before sorting
     array = [...new Set(array)];
+    array.sort((a, b) => a - b);
 
     let mid = Math.floor(array.length / 2);
     let leftArr = array.slice(0, mid);
