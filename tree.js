@@ -35,8 +35,8 @@ export class Tree {
     let currentNode = this.root;
     const node = new Node(value);
     if (currentNode === null) {
-      //currentNode = node
-      return node;
+      this.root = node;
+      return;
     }
 
     while (currentNode !== null) {
@@ -44,11 +44,11 @@ export class Tree {
       else if (currentNode.data > value) {
         if (currentNode.left === null) {
           currentNode.left = node;
-        } else currentNode = currentNode.left.data;
+        } else currentNode = currentNode.left;
       } else {
         if (currentNode.right === null) {
           currentNode.right = node;
-        } else currentNode = currentNode.right.data;
+        } else currentNode = currentNode.right;
       }
     }
   }
