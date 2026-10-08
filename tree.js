@@ -33,13 +33,17 @@ export class Tree {
 
   insert(value) {
     let currentNode = this.root;
-    if (currentNode === null) return new Node(value);
+    if (currentNode === null) {
+      const node = new Node(value);
+      //currentNode = node
+      return node;
+    }
 
     while (currentNode !== null) {
       if (currentNode.data === value) return currentNode.data;
-      else if (currentNode.data < value)
-        currentNode = this.insert(currentNode.left);
-      else currentNode = this.insert(currentNode.right);
+      else if (currentNode.data > value)
+        currentNode = this.insert(currentNode.left.data);
+      else currentNode = this.insert(currentNode.right.data);
     }
   }
 }
