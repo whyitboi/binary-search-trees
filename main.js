@@ -17,3 +17,4 @@ prettyPrint(tree.root);
 
 //callback test
 tree.levelOrderForEachStarter((value) => console.log(value));
+tree.preOrderForEach((value) => console.log(value));

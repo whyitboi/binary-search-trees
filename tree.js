@@ -156,31 +156,43 @@ export class Tree {
   }
 
   //Depth-First Traversal
+  //Helper recursive functions
+  preOrderForEachRecursive(node, callback) {
+    if (node === null) return;
+    callback(node.data);
+    this.preOrderForEachRecursive(node.left, callback);
+    this.preOrderForEachRecursive(node.right, callback);
+  }
+  inOrderForEachRecursive(node, callback) {
+    if (node === null) return;
+    this.inOrderForEachRecursive(node.left, callback);
+    callback(node.data);
+    this.inOrderForEachRecursive(node.right, callback);
+  }
+  postOrderForEachRecursive(node, callback) {
+    if (node === null) return;
+    this.inOrderForEachRecursive(node.left, callback);
+    this.inOrderForEachRecursive(node.right, callback);
+    callback(node.data);
+  }
+
+  //Travesal
   preOrderForEach(callback) {
     //preorder function
     if (typeof callback !== "function") {
       throw new Error("Callback is required");
     }
-    let queue = [];
-    queue.push(this.root);
-    this.preOrderForEachRecursive(queue, callback);
+    let node = this.root;
+    this.preOrderForEachRecursive(node, callback);
   }
-  preOrderForEachRecursive(queue, callback) {
-    if (queue.length === 0) return;
-    let node = queue.shift();
-    callback(node.data);
-    if (node.left !== null) {
-      queue.push(node.left);
-      node = node.left;
-    }
-    //if (node.right !== null) queue.push(node.right);
-    this.levelOrderForEachRecursive(queue, callback);
-  }
+
   inOrderForEach(callback) {
     //inorder function
     if (typeof callback !== "function") {
       throw new Error("Callback is required");
     }
+    let node = this.root;
+    this.inOrderForEachRecursive(node, callback);
   }
 
   postOrderForeach(callback) {
@@ -188,5 +200,7 @@ export class Tree {
     if (typeof callback !== "function") {
       throw new Error("Callback is required");
     }
+    let node = this.root;
+    this.postOrderForEachRecursive(node, callback);
   }
 }
