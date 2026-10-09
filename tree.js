@@ -222,15 +222,29 @@ export class Tree {
     }
     return undefined;
   }
+
+  //helper function for height
+  heightRecursive(node) {
+    if (node === null) return -1;
+    return (
+      1 +
+      Math.max(
+        heightRecursive(currentNode.left),
+        heightRecursive(currentNode.right),
+      )
+    );
+  }
   height(value) {
     if (this.root === null) return;
-    let height = 0;
-    currentNode = this.root;
+    let currentNode = this.root;
 
-    if (currentNode.data === value) return height;
-
-    height = 1 + max(height(currentNode.left), height(currentNode.right));
-
-    //not sure. I should have a return -1 that returns that when a leaf nodes is reached but i'm not sure
+    while (currentNode !== null) {
+      if (value < currentNode.data) {
+        currentNode = currentNode.left;
+      } else if (value > currentNode.data) {
+        currentNode = currentNode.right;
+      } else return this.heightRecursive(currentNode);
+    }
+    return undefined;
   }
 }
