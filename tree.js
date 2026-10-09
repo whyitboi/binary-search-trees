@@ -3,6 +3,7 @@ export class Tree {
   constructor(someArray) {
     this.root = this.buildTree(someArray);
   }
+
   buildTree(array) {
     if (array.length <= 0) return null;
     //copy/deduplicate before sorting
@@ -19,6 +20,7 @@ export class Tree {
 
     return root;
   }
+
   includes(value) {
     let currentNode = this.root;
     while (currentNode !== null) {
@@ -53,6 +55,7 @@ export class Tree {
       }
     }
   }
+
   deleteWithTwoChildren(target) {
     let successor = target.right;
     while (successor.left !== null) {
@@ -122,6 +125,8 @@ export class Tree {
       }
     }
   }
+
+  //Breadth-First Traversal
   levelOrderForEach(callback) {
     if (typeof callback !== "function") {
       throw new Error("Callback is required");
@@ -185,7 +190,6 @@ export class Tree {
     let node = this.root;
     this.preOrderForEachRecursive(node, callback);
   }
-
   inOrderForEach(callback) {
     //inorder function
     if (typeof callback !== "function") {
@@ -194,7 +198,6 @@ export class Tree {
     let node = this.root;
     this.inOrderForEachRecursive(node, callback);
   }
-
   postOrderForEach(callback) {
     //postorder function
     if (typeof callback !== "function") {
@@ -203,25 +206,40 @@ export class Tree {
     let node = this.root;
     this.postOrderForEachRecursive(node, callback);
   }
+
   depth(value) {
-    if (this.root === null) return count;
+    if (this.root === null) return;
     let currentNode = this.root;
     let count = 0;
+
     while (currentNode !== null) {
-      if (currentNode.data > value) {
-        if (currentNode.left !== null && currentNode.left.data === value) {
-          return count;
-        }
+      if (value < currentNode.data) {
         currentNode = currentNode.left;
         count++;
-      } else if (currentNode.data > value) {
-        if (currentNode.right !== null && currentNode.right.data === value) {
-          return count;
-        }
+      } else if (value > currentNode.data) {
         currentNode = currentNode.right;
         count++;
-      } else return undefined;
+      } else return count;
     }
+    return undefined;
+
+    // while (currentNode !== null) {
+    //   if (currentNode.data > value) {
+    //     count++
+    //     if (currentNode.left !== null && currentNode.left.data === value) {
+    //       return count;
+    //     }
+    //     currentNode = currentNode.left;
+
+    //   } else if (currentNode.data < value) {
+    //     count++
+    //     if (currentNode.right !== null && currentNode.right.data === value) {
+    //       return count;
+    //     }
+    //     currentNode = currentNode.right;
+
+    //   } else return undefined;
+    // }
   }
   height(value) {}
 }
