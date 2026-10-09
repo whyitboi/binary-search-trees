@@ -63,10 +63,13 @@ export class Tree {
           const target = currentNode.left;
           if (target.left !== null && target.right === null) {
             //left child
+            currentNode.left = target.left;
           } else if (target.left === null && target.right !== null) {
             //right child
-          } else {
-            //2children
+            currentNode.right = target.right;
+          } else if (target.left === null && target.right === null) {
+            currentNode = null;
+            //leaf Node
           }
         } else currentNode = currentNode.left;
       } else if (currentNode.data < value) {
@@ -76,8 +79,9 @@ export class Tree {
             //left child
           } else if (target.left === null && target.right !== null) {
             //right child
-          } else {
-            //2children
+          } else if (target.left !== null && target.right !== null) {
+            //leaf node
+            currentNode = null;
           }
         } else currentNode = currentNode.right;
       }
