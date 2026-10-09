@@ -137,4 +137,21 @@ export class Tree {
       if (node.right !== null) queue.push(node.right);
     }
   }
+  levelOrderForEachRecursive(callback) {
+    if (typeof callback !== "function") {
+      throw new Error("Callback is required");
+    }
+    if (this.root === null) return;
+    let queue = [];
+    queue.push(this.root);
+
+    if (queue.length === 0) return;
+    else {
+      let node = queue.shift();
+      callback(node.data);
+      if (node.left !== null) queue.push(node.left);
+      if (node.right !== null) queue.push(node.right);
+    }
+    levelOrderForEachRecursive(callback);
+  }
 }
