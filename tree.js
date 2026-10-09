@@ -154,4 +154,24 @@ export class Tree {
     queue.push(this.root);
     this.levelOrderForEachRecursive(queue, callback);
   }
+
+  //Depth-First Traversial
+  inOrderForEach(callback) {
+    //inorder function
+    if (typeof callback !== "function") {
+      throw new Error("Callback is required");
+    }
+  }
+  preOrderForEach(callback) {
+    //preorder function
+    if (typeof callback !== "function") {
+      throw new Error("Callback is required");
+    }
+  }
+  postOrderForeach(callback) {
+    //postorder function
+    if (typeof callback !== "function") {
+      throw new Error("Callback is required");
+    }
+  }
 }
