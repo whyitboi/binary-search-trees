@@ -62,7 +62,6 @@ export class Tree {
     //recursive call to remove succesor node
     this.deleteItem(successorData);
     target.data = successorData;
-    return;
   }
   deleteItem(value) {
     let currentNode = this.root;
@@ -81,7 +80,7 @@ export class Tree {
           this.root = null;
           return;
         } else {
-          deleteWithTwoChildren(this.root);
+          this.deleteWithTwoChildren(this.root);
           return;
         }
         //left subtree
@@ -98,7 +97,7 @@ export class Tree {
             currentNode.left = null;
             return;
           } else {
-            deleteWithTwoChildren(target);
+            this.deleteWithTwoChildren(target);
             return;
           }
         } else currentNode = currentNode.left;
@@ -116,11 +115,29 @@ export class Tree {
             currentNode.right = null;
             return;
           } else {
-            deleteWithTwoChildren(target);
+            this.deleteWithTwoChildren(target);
             return;
           }
         } else currentNode = currentNode.right;
       }
     }
+  }
+  levelOrderForEach(callback) {
+    if (typeof callback !== "function") {
+      throw new Error("Callback is required");
+    }
+    if (this.root === null) return;
+    let queue = [];
+    let currentNode = this.root;
+
+    while (currentNode !== null) {
+      queue.push(currentNode.left, currentNode.right);
+    }
+    if (queue.length > 0) {
+      let value = queue[0];
+      queue.slice(0, 1);
+      this.levelOrderForEach(callback(value));
+    }
+    // this.levelOrderForEach()
   }
 }
