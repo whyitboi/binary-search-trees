@@ -132,16 +132,9 @@ export class Tree {
 
     while (queue.length > 0) {
       let node = queue.shift();
-      callback(node.value);
-      if (node.left !== null && node.right === null) {
-        queue.push(node.left);
-      } else if (node.left === null && node.right !== null) {
-        queue.push(node.right);
-      } else if (node.left !== null && node.right !== null) {
-        queue.push(node.left, node.right);
-      } else return;
+      callback(node.data);
+      if (node.left !== null) queue.push(node.left);
+      if (node.right !== null) queue.push(node.right);
     }
-
-    // this.levelOrderForEach()
   }
 }
