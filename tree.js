@@ -108,7 +108,8 @@ export class Tree {
               successor = successor.left;
             }
             const successorData = successor.data;
-            successor = null;
+            //recursive call to remove succesor node
+            this.deleteItem(successorData);
             target.data = successorData;
             return;
           }
