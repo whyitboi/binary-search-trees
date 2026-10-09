@@ -102,11 +102,14 @@ export class Tree {
             currentNode.right = null;
             return;
           } else {
-            while (target.left !== null) {
-              target = target.left;
+            //smallest value on the right is leftmost child
+            let successor = target.right;
+            while (successor.left !== null) {
+              successor = successor.left;
             }
-            const targetData = target.data;
-            currentNode.right.data = targetData;
+            const successorData = successor.data;
+            successor = null;
+            target.data = successorData;
             return;
           }
         } else currentNode = currentNode.right;
