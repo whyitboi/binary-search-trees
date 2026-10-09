@@ -152,10 +152,6 @@ export class Tree {
     if (this.root === null) return;
     let queue = [];
     queue.push(this.root);
-
-    if (queue.length === 0) return;
-    else {
-      this.levelOrderForEachRecursive(queue, callback);
-    }
+    this.levelOrderForEachRecursive(queue, callback);
   }
 }
