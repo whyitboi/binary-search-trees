@@ -62,26 +62,28 @@ export class Tree {
         if (currentNode.left.data === value) {
           const target = currentNode.left;
           if (target.left !== null && target.right === null) {
-            //left child
             currentNode.left = target.left;
+            return;
           } else if (target.left === null && target.right !== null) {
-            //right child
-            currentNode.right = target.right;
+            currentNode.left = target.right;
+            return;
           } else if (target.left === null && target.right === null) {
-            currentNode = null;
-            //leaf Node
+            currentNode.left = null;
+            return;
           }
         } else currentNode = currentNode.left;
       } else if (currentNode.data < value) {
         if (currentNode.right.data === value) {
           const target = currentNode.right;
           if (target.left !== null && target.right === null) {
-            //left child
+            currentNode.right = target.left;
+            return;
           } else if (target.left === null && target.right !== null) {
-            //right child
-          } else if (target.left !== null && target.right !== null) {
-            //leaf node
-            currentNode = null;
+            currentNode.right = target.right;
+            return;
+          } else if (target.left === null && target.right === null) {
+            currentNode.right = null;
+            return;
           }
         } else currentNode = currentNode.right;
       }
