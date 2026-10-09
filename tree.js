@@ -211,7 +211,6 @@ export class Tree {
     if (this.root === null) return;
     let currentNode = this.root;
     let count = 0;
-
     while (currentNode !== null) {
       if (value < currentNode.data) {
         currentNode = currentNode.left;
@@ -222,24 +221,16 @@ export class Tree {
       } else return count;
     }
     return undefined;
-
-    // while (currentNode !== null) {
-    //   if (currentNode.data > value) {
-    //     count++
-    //     if (currentNode.left !== null && currentNode.left.data === value) {
-    //       return count;
-    //     }
-    //     currentNode = currentNode.left;
-
-    //   } else if (currentNode.data < value) {
-    //     count++
-    //     if (currentNode.right !== null && currentNode.right.data === value) {
-    //       return count;
-    //     }
-    //     currentNode = currentNode.right;
-
-    //   } else return undefined;
-    // }
   }
-  height(value) {}
+  height(value) {
+    if (this.root === null) return;
+    let height = 0;
+    currentNode = this.root;
+
+    if (currentNode.data === value) return height;
+
+    height = 1 + max(height(currentNode.left), height(currentNode.right));
+
+    //not sure. I should have a return -1 that returns that when a leaf nodes is reached but i'm not sure
+  }
 }
