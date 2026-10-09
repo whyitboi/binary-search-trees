@@ -57,9 +57,12 @@ export class Tree {
     let currentNode = this.root;
 
     if (currentNode === null) return;
+
     while (currentNode !== null) {
-      if (currentNode.data > value) {
-        if (currentNode.left.data === value) {
+      if (currentNode.data === value && currentNode.data !== null) {
+        currentNode = null;
+      } else if (currentNode.data > value) {
+        if (currentNode.left.data === value && currentNode.left.data !== null) {
           const target = currentNode.left;
           if (target.left !== null && target.right === null) {
             currentNode.left = target.left;
@@ -73,7 +76,10 @@ export class Tree {
           }
         } else currentNode = currentNode.left;
       } else if (currentNode.data < value) {
-        if (currentNode.right.data === value) {
+        if (
+          currentNode.right.data === value &&
+          currentNode.right.data !== null
+        ) {
           const target = currentNode.right;
           if (target.left !== null && target.right === null) {
             currentNode.right = target.left;
