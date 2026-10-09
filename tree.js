@@ -203,4 +203,25 @@ export class Tree {
     let node = this.root;
     this.postOrderForEachRecursive(node, callback);
   }
+  depth(value) {
+    if (this.root === null) return count;
+    let currentNode = this.root;
+    let count = 0;
+    while (currentNode !== null) {
+      if (currentNode.data > value) {
+        if (currentNode.left !== null && currentNode.left.data === value) {
+          return count;
+        }
+        currentNode = currentNode.left;
+        count++;
+      } else if (currentNode.data > value) {
+        if (currentNode.right !== null && currentNode.right.data === value) {
+          return count;
+        }
+        currentNode = currentNode.right;
+        count++;
+      } else return undefined;
+    }
+  }
+  height(value) {}
 }
