@@ -16,4 +16,4 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 prettyPrint(tree.root);
 
 //callback test
-tree.levelOrderForEach((value) => console.log(value));
+tree.levelOrderForEachRecursive((value) => console.log(value));

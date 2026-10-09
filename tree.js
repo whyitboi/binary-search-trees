@@ -137,6 +137,12 @@ export class Tree {
       if (node.right !== null) queue.push(node.right);
     }
   }
+  holdTheQueueAndCallback(queue, callback) {
+    let node = queue.shift();
+    callback(node.data);
+    if (node.left !== null) queue.push(node.left);
+    if (node.right !== null) queue.push(node.right);
+  }
   levelOrderForEachRecursive(callback) {
     if (typeof callback !== "function") {
       throw new Error("Callback is required");
@@ -147,11 +153,8 @@ export class Tree {
 
     if (queue.length === 0) return;
     else {
-      let node = queue.shift();
-      callback(node.data);
-      if (node.left !== null) queue.push(node.left);
-      if (node.right !== null) queue.push(node.right);
+      this.holdTheQueueAndCallback(queue, callback);
     }
-    levelOrderForEachRecursive(callback);
+    this.levelOrderForEachRecursive(callback);
   }
 }
