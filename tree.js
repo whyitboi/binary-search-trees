@@ -128,17 +128,18 @@ export class Tree {
     }
     if (this.root === null) return;
     let queue = [];
-    let currentNode = this.root;
-    queue.push(currentNode);
+    queue.push(this.root);
 
     while (queue.length > 0) {
-      let value = queue.shift();
-      callback(value);
-      if (currentNode.left !== null) {
-        queue.push(currentNode.left);
-      } else if (currentNode.right !== null) {
-        queue.push(currentNode.right);
-      }
+      let node = queue.shift();
+      callback(node.value);
+      if (node.left !== null && node.right === null) {
+        queue.push(node.left);
+      } else if (node.left === null && node.right !== null) {
+        queue.push(node.right);
+      } else if (node.left !== null && node.right !== null) {
+        queue.push(node.left, node.right);
+      } else return;
     }
 
     // this.levelOrderForEach()
