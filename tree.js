@@ -251,19 +251,15 @@ export class Tree {
   //helper function for isBalanced
   isBalancedRecursive(node) {
     if (node === null) return true;
-    if (
+    return (
       Math.abs(
         this.heightRecursive(node.left) - this.heightRecursive(node.right),
       ) <= 1 &&
       this.isBalancedRecursive(node.left) &&
       this.isBalancedRecursive(node.right)
-    ) {
-      return true;
-    } else return false;
+    );
   }
   isBalanced() {
-    //return true if tree is balanced
-    let currentNode = this.root;
-    return this.isBalancedRecursive(currentNode);
+    return this.isBalancedRecursive(this.root);
   }
 }
