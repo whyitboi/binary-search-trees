@@ -16,5 +16,7 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 prettyPrint(tree.root);
 
 //callback test
-tree.levelOrderForEachStarter((value) => console.log(value));
-tree.preOrderForEach((value) => console.log(value));
+//tree.levelOrderForEachStarter((value) => console.log(value));
+//tree.preOrderForEach((value) => console.log(value));
+//tree.postOrderForEach((value) => console.log(value));
+//tree.inOrderForEach((value) => console.log(value));

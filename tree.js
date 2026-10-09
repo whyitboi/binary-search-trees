@@ -262,4 +262,10 @@ export class Tree {
   isBalanced() {
     return this.isBalancedRecursive(this.root);
   }
+  rebalance() {
+    const arr = [];
+    this.inOrderForEach((value) => {
+      arr.push(value);
+    });
+  }
 }
