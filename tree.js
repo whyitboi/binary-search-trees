@@ -53,6 +53,17 @@ export class Tree {
       }
     }
   }
+  deleteWithTwoChildren(target) {
+    let successor = target.right;
+    while (successor.left !== null) {
+      successor = successor.left;
+    }
+    const successorData = successor.data;
+    //recursive call to remove succesor node
+    this.deleteItem(successorData);
+    target.data = successorData;
+    return;
+  }
   deleteItem(value) {
     let currentNode = this.root;
 
@@ -70,8 +81,8 @@ export class Tree {
           this.root = null;
           return;
         } else {
-          //2 children
-          console.log("2 children");
+          deleteWithTwoChildren(this.root);
+          return;
         }
         //left subtree
       } else if (currentNode.data > value) {
@@ -85,6 +96,9 @@ export class Tree {
             return;
           } else if (target.left === null && target.right === null) {
             currentNode.left = null;
+            return;
+          } else {
+            deleteWithTwoChildren(target);
             return;
           }
         } else currentNode = currentNode.left;
@@ -102,15 +116,7 @@ export class Tree {
             currentNode.right = null;
             return;
           } else {
-            //smallest value on the right is leftmost child
-            let successor = target.right;
-            while (successor.left !== null) {
-              successor = successor.left;
-            }
-            const successorData = successor.data;
-            //recursive call to remove succesor node
-            this.deleteItem(successorData);
-            target.data = successorData;
+            deleteWithTwoChildren(target);
             return;
           }
         } else currentNode = currentNode.right;
