@@ -229,8 +229,8 @@ export class Tree {
     return (
       1 +
       Math.max(
-        heightRecursive(currentNode.left),
-        heightRecursive(currentNode.right),
+        this.heightRecursive(node.left),
+        this.heightRecursive(node.right),
       )
     );
   }
