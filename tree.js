@@ -267,6 +267,6 @@ export class Tree {
     this.inOrderForEach((value) => {
       balancedTree.push(value);
     });
-    this.root = buildTree(balancedTree);
+    this.root = this.buildTree(balancedTree);
   }
 }
