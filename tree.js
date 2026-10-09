@@ -155,19 +155,34 @@ export class Tree {
     this.levelOrderForEachRecursive(queue, callback);
   }
 
-  //Depth-First Traversial
+  //Depth-First Traversal
+  preOrderForEach(callback) {
+    //preorder function
+    if (typeof callback !== "function") {
+      throw new Error("Callback is required");
+    }
+    let queue = [];
+    queue.push(this.root);
+    this.preOrderForEachRecursive(queue, callback);
+  }
+  preOrderForEachRecursive(queue, callback) {
+    if (queue.length === 0) return;
+    let node = queue.shift();
+    callback(node.data);
+    if (node.left !== null) {
+      queue.push(node.left);
+      node = node.left;
+    }
+    //if (node.right !== null) queue.push(node.right);
+    this.levelOrderForEachRecursive(queue, callback);
+  }
   inOrderForEach(callback) {
     //inorder function
     if (typeof callback !== "function") {
       throw new Error("Callback is required");
     }
   }
-  preOrderForEach(callback) {
-    //preorder function
-    if (typeof callback !== "function") {
-      throw new Error("Callback is required");
-    }
-  }
+
   postOrderForeach(callback) {
     //postorder function
     if (typeof callback !== "function") {
