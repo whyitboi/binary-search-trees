@@ -171,8 +171,8 @@ export class Tree {
   }
   postOrderForEachRecursive(node, callback) {
     if (node === null) return;
-    this.inOrderForEachRecursive(node.left, callback);
-    this.inOrderForEachRecursive(node.right, callback);
+    this.postOrderForEachRecursive(node.left, callback);
+    this.postOrderForEachRecursive(node.right, callback);
     callback(node.data);
   }
 
@@ -195,7 +195,7 @@ export class Tree {
     this.inOrderForEachRecursive(node, callback);
   }
 
-  postOrderForeach(callback) {
+  postOrderForEach(callback) {
     //postorder function
     if (typeof callback !== "function") {
       throw new Error("Callback is required");
