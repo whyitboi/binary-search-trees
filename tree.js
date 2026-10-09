@@ -250,20 +250,20 @@ export class Tree {
 
   //helper function for isBalanced
   isBalancedRecursive(node) {
-    if (node === null) true;
+    if (node === null) return true;
     if (
       Math.abs(
         this.heightRecursive(node.left) - this.heightRecursive(node.right),
-      ) <= 1
+      ) <= 1 &&
+      this.isBalancedRecursive(node.left) &&
+      this.isBalancedRecursive(node.right)
     ) {
       return true;
-    }
-    return false;
+    } else return false;
   }
   isBalanced() {
     //return true if tree is balanced
     let currentNode = this.root;
-
     return this.isBalancedRecursive(currentNode);
   }
 }
