@@ -1,5 +1,5 @@
 import { Tree } from "./tree.js";
-const arr = [5, 6, 3, 9, 2, 0, 2]; //Array.from({length:}, ()=> Math.floor(Math.random()*100))
+const arr = [5, 6, 3, 9, 2, 0, 2]; //Array.from({length:15}, ()=> Math.floor(Math.random()*100))
 console.log(arr);
 
 //1. Create binary search tree
